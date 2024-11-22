@@ -82,26 +82,24 @@ const projects: ProjectCardProps[] = [
 
 export default function Projects() {
     return (
-        <div>
-            <div className="mt-[10vh]">
-                <div className="flex flex-1 flex-col justify-center gap-4 p-4 pt-0">
-                    <div className="grid auto-rows-min gap-4 xs:grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
-                        {projects.map((project, index) => (
-                            <ProjectCard
-                                key={index}
-                                title={project.title}
-                                description={project.description}
-                                src={project.src}
-                                alt={project.alt}
-                                href={project.href}
-                                data={project.data}
-                            />
-                        ))}
-                    </div>
+        <div className="mt-[10vh]">
+            <div className="flex flex-1 flex-col justify-center gap-4 p-4 pt-0">
+                <div className="grid auto-rows-min gap-4 xs:grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
+                    {projects.map((project, index) => (
+                        <ProjectCard
+                            key={index}
+                            title={project.title}
+                            description={project.description}
+                            src={project.src}
+                            alt={project.alt}
+                            href={project.href}
+                            data={project.data}
+                        />
+                    ))}
                 </div>
-                <div className="flex flex-1 flex-col justify-center gap-4 p-4 ">
-                    <AddProject />
-                </div>
+            </div>
+            <div className="flex flex-1 flex-col justify-center gap-4 p-4 ">
+                <AddProject />
             </div>
         </div>
     );
