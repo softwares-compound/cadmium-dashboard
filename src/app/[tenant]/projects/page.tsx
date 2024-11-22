@@ -1,5 +1,4 @@
 import * as React from "react"
-import Navbar from "@/components/custom/navbar/navbar"
 import { ProjectCardProps } from "@/app/types/type";
 import ProjectCard from "@/components/custom/project-card";
 import AddProject from "@/components/custom/app-project";
@@ -84,7 +83,6 @@ const projects: ProjectCardProps[] = [
 export default function Projects() {
     return (
         <div>
-            <Navbar />
             <div className="mt-[10vh]">
                 <div className="flex flex-1 flex-col justify-center gap-4 p-4 pt-0">
                     <div className="grid auto-rows-min gap-4 xs:grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
