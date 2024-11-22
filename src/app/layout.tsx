@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import "./globals.css";
 import { ThemeProvider } from "@/provider/theme-provider";
-import { ThemeToggle } from "@/components/custom/theme-toggle";
+// import { ThemeToggle } from "@/components/custom/theme-toggle";
 
 export const metadata: Metadata = {
   title: "Create Next App",
@@ -23,7 +23,7 @@ export default function RootLayout({
           enableSystem
           disableTransitionOnChange
         >
-          <ThemeToggle />
+          {/* <ThemeToggle /> */}
           {children}
         </ThemeProvider>
       </body>

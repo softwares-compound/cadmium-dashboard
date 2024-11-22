@@ -1,7 +1,8 @@
 import * as React from "react"
-// import Navbar from "@/components/custom/navbar/navbar"
+import Navbar from "@/components/custom/navbar/navbar"
 import { ProjectCardProps } from "@/app/types/type";
 import ProjectCard from "@/components/custom/project-card";
+import AddProject from "@/components/custom/app-project";
 
 
 
@@ -11,7 +12,7 @@ const projects: ProjectCardProps[] = [
         alt: "project logo",
         title: "Rosterly.io",
         description: "A collection of popular software built with Next.js",
-        href: "/banna/rosterly/dashboard",
+        href: "/rdx/rosterly/dashboard",
         data: [
             {
                 name: "New Error",
@@ -35,7 +36,7 @@ const projects: ProjectCardProps[] = [
         alt: "project logo",
         title: "Softwares compound",
         description: "A collection of popular software built with Next.js",
-        href: "/software_compound/dashboard",
+        href: "/rdx/software-compound/dashboard",
         data: [
             {
                 name: "New Error",
@@ -59,7 +60,7 @@ const projects: ProjectCardProps[] = [
         alt: "project logo",
         title: "Radixlink.lnc",
         description: "A collection of popular software built with Next.js",
-        href: "/material-ui/dashboard",
+        href: "/rdx/material-ui/dashboard",
         data: [
             {
                 name: "New Error",
@@ -83,7 +84,7 @@ const projects: ProjectCardProps[] = [
 export default function Projects() {
     return (
         <div>
-            {/* <Navbar /> */}
+            <Navbar />
             <div className="mt-[10vh]">
                 <div className="flex flex-1 flex-col justify-center gap-4 p-4 pt-0">
                     <div className="grid auto-rows-min gap-4 xs:grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
@@ -99,6 +100,9 @@ export default function Projects() {
                             />
                         ))}
                     </div>
+                </div>
+                <div className="flex flex-1 flex-col justify-center gap-4 p-4 ">
+                    <AddProject />
                 </div>
             </div>
         </div>
