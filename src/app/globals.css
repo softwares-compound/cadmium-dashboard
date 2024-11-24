@@ -38,6 +38,8 @@ body {
     --chart-4: #8bc34a;
     --chart-5: #ffd700;
     --radius: 0.5rem;
+
+    /* sidebar */
     --sidebar-background: #dde6ed;
     --sidebar-foreground: #27374d;
     --sidebar-primary: #526d82;

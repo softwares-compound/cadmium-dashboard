@@ -81,8 +81,8 @@ export default {
 			fontSize: {
 				xs: '11px',
 				sm: '12px',
-				base: '13px',
-				md: '15px',
+				tiny: '13px',
+				base: '15px',
 				lg: '17px',
 				xl: '19px',
 				'2x': '22px',
