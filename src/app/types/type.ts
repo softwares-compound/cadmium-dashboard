@@ -12,3 +12,11 @@ export type ProjectCardProps = {
     data: ProjectCardData[]
     href: string
 }
+
+export type ErrorLogTableData = {
+    timestamp: string
+    apiEndpoint: string
+    method: "default" | "GET" | "POST" | "PUT" | "PATCH" | "DELETE" | null | undefined
+    errorMessage: string
+    action: string
+}

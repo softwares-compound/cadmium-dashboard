@@ -8,8 +8,55 @@ import {
     BreadcrumbSeparator,
 } from "@/components/ui/breadcrumb"
 import { Separator } from "@/components/ui/separator"
+import { Typography } from "@/components/ui/typography";
+import TablePagination from "@/components/custom/error-logs/table-pagination";
+import ErrorLogTable from "@/components/custom/error-logs";
+import { ErrorLogTableData } from "@/app/types/type";
 
-
+const tableData: ErrorLogTableData[] = [
+    {
+        timestamp: "2024-11-22 10:45:12",
+        apiEndpoint: "/api/v1/users",
+        method: "GET",
+        errorMessage: "User not found",
+        action: "Retry",
+    },
+    {
+        timestamp: "2024-11-22 10:50:25",
+        apiEndpoint: "/api/v1/login",
+        method: "POST",
+        errorMessage: "Invalid credentials",
+        action: "Retry",
+    },
+    {
+        timestamp: "2024-11-22 11:05:00",
+        apiEndpoint: "/api/v1/products",
+        method: "GET",
+        errorMessage: "Internal server error",
+        action: "Report",
+    },
+    {
+        timestamp: "2024-11-22 11:15:42",
+        apiEndpoint: "/api/v1/orders",
+        method: "PUT",
+        errorMessage: "Unauthorized access",
+        action: "Reauthenticate",
+    },
+    {
+        timestamp: "2024-11-22 11:20:10",
+        apiEndpoint: "/api/v1/cart",
+        method: "DELETE",
+        errorMessage: "Resource not found",
+        action: "Retry",
+    },
+    {
+        timestamp: "2024-11-22 11:20:10",
+        apiEndpoint: "/api/v1/cart",
+        method: "PATCH",
+        errorMessage: "Resource not found",
+        action: "Retry",
+    },
+];
 
 export default function Dashboard() {
     return (
@@ -36,14 +83,19 @@ export default function Dashboard() {
             </header>
             <div className="flex flex-1 flex-col gap-4 p-4 pt-0">
                 <div className="grid auto-rows-min gap-4 md:grid-cols-3">
-                    <div className="aspect-video rounded-xl bg-muted" />
-                    <div className="aspect-video rounded-xl bg-muted" />
-                    <div className="aspect-video rounded-xl bg-muted" />
+                    <div className="aspect-video rounded-xl dark:bg-muted bg-card-2" />
+                    <div className="aspect-video rounded-xl dark:bg-muted bg-card-2" />
+                    <div className="aspect-video rounded-xl dark:bg-muted bg-card-2" />
                 </div>
-                <div className="min-h-[100vh] flex-1 rounded-xl bg-muted md:min-h-min" >
-
+                <div className="flex-1 py-2 rounded-xl dark:bg-muted bg-card-2" >
+                    <Typography variant="xl" className=" px-2 py-2">Error logs</Typography>
+                    <ErrorLogTable tableData={tableData} />
+                    <div className="mt-4">
+                        <TablePagination />
+                    </div>
                 </div>
             </div>
         </div>
     );
 }
+

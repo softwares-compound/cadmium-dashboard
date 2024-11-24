@@ -12,6 +12,8 @@ body {
     --foreground: #27374d;
     --card: #dde6ed;
     --card-foreground: #27374d;
+    --card-2: #d6e0e9;
+    --card--2-foreground: #27374d;
     --popover: #dde6ed;
     --popover-foreground: #27374d;
     --primary: #526d82;
@@ -40,7 +42,7 @@ body {
     --radius: 0.5rem;
 
     /* sidebar */
-    --sidebar-background: #dde6ed;
+    --sidebar-background: #d6e0e9;
     --sidebar-foreground: #27374d;
     --sidebar-primary: #526d82;
     --sidebar-primary-foreground: #dde6ed;
