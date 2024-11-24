@@ -12,7 +12,7 @@ const ActionButton = () => {
         <div className='flex justify-end '>
             <DropdownMenu>
                 <DropdownMenuTrigger asChild>
-                    <MoreVerticalIcon className='text-muted-foreground hover:text-foreground w-5' />
+                    <MoreVerticalIcon className='text-foreground w-5' />
                 </DropdownMenuTrigger>
                 <DropdownMenuContent
                 >

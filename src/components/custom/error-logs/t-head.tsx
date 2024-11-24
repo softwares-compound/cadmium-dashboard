@@ -8,7 +8,7 @@ import {
 const THead = () => {
     return (
         <TableHeader>
-            <TableRow>
+            <TableRow className=''>
                 <TableHead className="w-[100px]">Timestamp</TableHead>
                 <TableHead>API endpoint</TableHead>
                 <TableHead>Method</TableHead>
