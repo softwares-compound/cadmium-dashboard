@@ -8,25 +8,12 @@ import {
     BreadcrumbSeparator,
 } from "@/components/ui/breadcrumb"
 import { Separator } from "@/components/ui/separator"
-import {
-    Table,
-    TableBody,
-    TableCell,
-    TableHead,
-    TableHeader,
-    TableRow,
-} from "@/components/ui/table"
-import {
-    Pagination,
-    PaginationContent,
-    PaginationEllipsis,
-    PaginationItem,
-    PaginationLink,
-    PaginationNext,
-    PaginationPrevious,
-} from "@/components/ui/pagination"
+import { Typography } from "@/components/ui/typography";
+import TablePagination from "@/components/custom/error-logs/table-pagination";
+import ErrorLogTable from "@/components/custom/error-logs";
+import { ErrorLogTableData } from "@/app/types/type";
 
-const tableData = [
+const tableData: ErrorLogTableData[] = [
     {
         timestamp: "2024-11-22 10:45:12",
         apiEndpoint: "/api/v1/users",
@@ -62,11 +49,14 @@ const tableData = [
         errorMessage: "Resource not found",
         action: "Retry",
     },
+    {
+        timestamp: "2024-11-22 11:20:10",
+        apiEndpoint: "/api/v1/cart",
+        method: "PATCH",
+        errorMessage: "Resource not found",
+        action: "Retry",
+    },
 ];
-
-
-
-
 
 export default function Dashboard() {
     return (
@@ -98,56 +88,14 @@ export default function Dashboard() {
                     <div className="aspect-video rounded-xl dark:bg-muted bg-card-2" />
                 </div>
                 <div className="flex-1 py-2 rounded-xl dark:bg-muted bg-card-2" >
-                    <Table>
-                        <TableHeader>
-                            <TableRow>
-                                <TableHead className="w-[100px]">Timestamp</TableHead>
-                                <TableHead>API endpoint</TableHead>
-                                <TableHead>Method</TableHead>
-                                <TableHead className="text-right">Error message</TableHead>
-                                <TableHead className="text-right">Action</TableHead>
-                            </TableRow>
-                        </TableHeader>
-                        <TableBody>
-                            {tableData.map((data) => (
-                                <TableRow key={data.timestamp}>
-                                    <TableCell className="font-medium">{data.timestamp}</TableCell>
-                                    <TableCell>{data.apiEndpoint}</TableCell>
-                                    <TableCell>{data.method}</TableCell>
-                                    <TableCell className="text-right">{data.errorMessage}</TableCell>
-                                    <TableCell className="text-right">{data.action}</TableCell>
-                                </TableRow>
-                            ))}
-                        </TableBody>
-                    </Table>
+                    <Typography variant="xl" className=" px-2 py-2">Error logs</Typography>
+                    <ErrorLogTable tableData={tableData} />
                     <div className="mt-4">
-                        <Pagination>
-                            <PaginationContent>
-                                <PaginationItem>
-                                    <PaginationPrevious href="#" />
-                                </PaginationItem>
-                                <PaginationItem>
-                                    <PaginationLink href="#">1</PaginationLink>
-                                </PaginationItem>
-                                <PaginationItem>
-                                    <PaginationLink href="#" isActive>
-                                        2
-                                    </PaginationLink>
-                                </PaginationItem>
-                                <PaginationItem>
-                                    <PaginationLink href="#">3</PaginationLink>
-                                </PaginationItem>
-                                <PaginationItem>
-                                    <PaginationEllipsis />
-                                </PaginationItem>
-                                <PaginationItem>
-                                    <PaginationNext href="#" />
-                                </PaginationItem>
-                            </PaginationContent>
-                        </Pagination>
+                        <TablePagination />
                     </div>
                 </div>
             </div>
         </div>
     );
 }
+
