@@ -15,6 +15,7 @@ import { ErrorLogTableData } from "@/app/types/type";
 import { ErrorLogChart } from "@/components/custom/error-logs/log-chart";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import NumericStats from "@/components/custom/error-logs/numeric-stats";
+import ReloadWithTimestamp from "@/components/custom/last-reload";
 
 const tableData: ErrorLogTableData[] = [
     {
@@ -66,26 +67,31 @@ export default function Dashboard() {
         <div className="">
             {/* <ToggleTheme /> */}
             <header className="flex h-16 shrink-0 items-center gap-2">
-                <div className="flex items-center gap-2 px-4">
-                    <SidebarTrigger className="-ml-1" />
-                    <Separator orientation="vertical" className="mr-2 h-4" />
-                    <Breadcrumb>
-                        <BreadcrumbList>
-                            <BreadcrumbItem className="hidden md:block">
-                                <BreadcrumbLink href="/tenant/projects/">
-                                    Projects
-                                </BreadcrumbLink>
-                            </BreadcrumbItem>
-                            <BreadcrumbSeparator className="hidden md:block" />
-                            <BreadcrumbItem>
-                                <BreadcrumbPage>Rosterly</BreadcrumbPage>
-                            </BreadcrumbItem>
-                            <BreadcrumbSeparator className="hidden md:block" />
-                            <BreadcrumbItem>
-                                <BreadcrumbPage>Log analysis</BreadcrumbPage>
-                            </BreadcrumbItem>
-                        </BreadcrumbList>
-                    </Breadcrumb>
+                <div className="w-full flex items-center justify-between">
+                    <div className="flex items-center gap-2 px-4">
+                        <SidebarTrigger className="-ml-1" />
+                        <Separator orientation="vertical" className="mr-2 h-4" />
+                        <Breadcrumb>
+                            <BreadcrumbList>
+                                <BreadcrumbItem className="hidden md:block">
+                                    <BreadcrumbLink href="/tenant/projects/">
+                                        Projects
+                                    </BreadcrumbLink>
+                                </BreadcrumbItem>
+                                <BreadcrumbSeparator className="hidden md:block" />
+                                <BreadcrumbItem>
+                                    <BreadcrumbPage>Rosterly</BreadcrumbPage>
+                                </BreadcrumbItem>
+                                <BreadcrumbSeparator className="hidden md:block" />
+                                <BreadcrumbItem>
+                                    <BreadcrumbPage>Log analysis</BreadcrumbPage>
+                                </BreadcrumbItem>
+                            </BreadcrumbList>
+                        </Breadcrumb>
+                    </div>
+                    <div>
+                        <ReloadWithTimestamp />
+                    </div>
                 </div>
             </header>
             <div className="flex flex-1 flex-col gap-4 p-4 pt-0">
