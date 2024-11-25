@@ -20,3 +20,11 @@ export type ErrorLogTableData = {
     errorMessage: string
     action: string
 }
+
+export type ErrorLogData = {
+    timestamp: string;
+    apiEndpoint: string;
+    method: string;
+    errorMessage: string;
+    resolutionSteps: string[];
+}
