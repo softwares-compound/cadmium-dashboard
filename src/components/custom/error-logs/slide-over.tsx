@@ -11,17 +11,12 @@ import { Typography } from "@/components/ui/typography";
 import { DialogTitle } from "@radix-ui/react-dialog";
 import CodeBlock from "./code-block";
 import { Copy } from "lucide-react";
+import { ErrorLogData } from "@/app/types/type";
 
 export interface SlideOverProps {
     open: boolean;
     onOpenChange: (open: boolean) => void;
-    errorLog: {
-        timestamp: string;
-        apiEndpoint: string;
-        method: string;
-        errorMessage: string;
-        resolutionSteps: string[];
-    };
+    errorLog: ErrorLogData;
     onMarkResolved: () => void;
 }
 

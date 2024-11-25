@@ -57,6 +57,8 @@ body {
     --foreground: #dde6ed;
     --card: #27374d;
     --card-foreground: #dde6ed;
+    --card-2: #32435b;
+    --card--2-foreground: #9db2bf;
     --popover: #27374d;
     --popover-foreground: #dde6ed;
     --primary: #dde6ed;
@@ -77,7 +79,7 @@ body {
     --border: #526d82;
     --input: #526d82;
     --ring: #9db2bf;
-    --chart-1: #4682b4;
+    --chart-1: #21547e;
     --chart-2: #2e8b57;
     --chart-3: #ffa500;
     --chart-4: #ba55d3;
