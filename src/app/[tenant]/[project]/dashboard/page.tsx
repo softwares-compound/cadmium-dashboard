@@ -13,7 +13,6 @@ import TablePagination from "@/components/custom/error-logs/table-pagination";
 import ErrorLogTable from "@/components/custom/error-logs";
 import { ErrorLogTableData } from "@/app/types/type";
 import { ErrorLogChart } from "@/components/custom/error-logs/log-chart";
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import NumericStats from "@/components/custom/error-logs/numeric-stats";
 import ReloadWithTimestamp from "@/components/custom/last-reload";
 
@@ -59,6 +58,20 @@ const tableData: ErrorLogTableData[] = [
         method: "PATCH",
         errorMessage: "Resource not found",
         action: "Retry",
+    },
+    {
+        timestamp: "2024-11-22 11:05:00",
+        apiEndpoint: "/api/v1/products",
+        method: "GET",
+        errorMessage: "Internal server error",
+        action: "Report",
+    },
+    {
+        timestamp: "2024-11-22 11:15:42",
+        apiEndpoint: "/api/v1/orders",
+        method: "PUT",
+        errorMessage: "Unauthorized access",
+        action: "Reauthenticate",
     },
 ];
 
