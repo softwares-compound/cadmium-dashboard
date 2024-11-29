@@ -1,3 +1,6 @@
+// This script is used to initialize the database when the application is first
+// run. It creates the necessary tables in the database if they do not already
+// exist.
 import { initializeDB } from "@/config/sqlite";
 
 (async () => {
@@ -8,3 +11,4 @@ import { initializeDB } from "@/config/sqlite";
         console.error('Error initializing database:', error);
     }
 })();
+
