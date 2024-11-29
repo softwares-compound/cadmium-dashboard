@@ -1,5 +1,5 @@
 import * as React from "react"
-import { ProjectCardProps } from "@/app/types/type";
+import { ProjectCardProps } from "@/types/type";
 import ProjectCard from "@/components/custom/project-card";
 import AddProject from "@/components/custom/app-project";
 

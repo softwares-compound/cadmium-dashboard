@@ -32,7 +32,7 @@ export const fetchLatestLogs = async (): Promise<Log[] | null> => {
       query GetLatestLogs {
         logs(page: 1, limit: 5) {
           id
-          error
+          err
           traceback
           url
           method

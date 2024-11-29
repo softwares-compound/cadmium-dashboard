@@ -3,7 +3,7 @@ import React from "react";
 import { TableBody, TableCell, TableRow } from "@/components/ui/table";
 import { HttpMethodBadge } from "./http-methods";
 import ActionButton from "./action";
-import { ErrorLogTableData } from "@/app/types/type";
+import { ErrorLogTableData } from "@/types/type";
 
 type Props = {
     tableData: ErrorLogTableData[];

@@ -1,8 +1,7 @@
 import axios, { AxiosInstance } from "axios";
 
-const BASE_URL = 'http://43.204.216.93/graphql/';
-
+const CLOUD_BASE_URL = 'http://43.204.216.93/';
 
 export const AXIOS_INSTANCE: AxiosInstance = axios.create({
-    baseURL: BASE_URL,
+    baseURL: CLOUD_BASE_URL,
 });

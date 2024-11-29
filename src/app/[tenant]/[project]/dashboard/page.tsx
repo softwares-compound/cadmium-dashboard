@@ -11,7 +11,7 @@ import { Separator } from "@/components/ui/separator"
 import { Typography } from "@/components/ui/typography";
 import TablePagination from "@/components/custom/error-logs/table-pagination";
 import ErrorLogTable from "@/components/custom/error-logs";
-import { ErrorLogTableData } from "@/app/types/type";
+import { ErrorLogTableData } from "@/types/type";
 import { ErrorLogChart } from "@/components/custom/error-logs/log-chart";
 import NumericStats from "@/components/custom/error-logs/numeric-stats";
 import ReloadWithTimestamp from "@/components/custom/last-reload";

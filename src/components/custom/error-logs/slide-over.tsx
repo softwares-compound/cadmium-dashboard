@@ -11,7 +11,7 @@ import { Typography } from "@/components/ui/typography";
 import { DialogTitle } from "@radix-ui/react-dialog";
 import CodeBlock from "./code-block";
 import { Copy } from "lucide-react";
-import { ErrorLogData } from "@/app/types/type";
+import { ErrorLogData } from "@/types/type";
 
 export interface SlideOverProps {
     open: boolean;

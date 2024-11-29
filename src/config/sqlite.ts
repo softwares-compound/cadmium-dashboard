@@ -24,6 +24,7 @@ export async function initializeDB(): Promise<void> {
       id INTEGER PRIMARY KEY AUTOINCREMENT,
       cd_id TEXT NOT NULL UNIQUE,
       cd_secret TEXT NOT NULL UNIQUE
+      created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
     )
   `);
 }

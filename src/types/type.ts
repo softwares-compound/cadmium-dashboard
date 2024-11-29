@@ -28,3 +28,14 @@ export type ErrorLogData = {
     errorMessage: string;
     resolutionSteps: string[];
 }
+
+export interface SigninFormState {
+    clientId: string;
+    clientSecret: string;
+    errors: { clientId: string; clientSecret: string };
+    loading: boolean;
+    setClientId: (clientId: string) => void;
+    setClientSecret: (clientSecret: string) => void;
+    setErrors: (errors: { clientId: string; clientSecret: string }) => void;
+    setLoading: (loading: boolean) => void;
+}

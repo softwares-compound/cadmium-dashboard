@@ -3,7 +3,7 @@ import React from 'react'
 import { Table } from "@/components/ui/table"
 import THead from './t-head';
 import TBody from './t-body';
-import { ErrorLogTableData } from '@/app/types/type';
+import { ErrorLogTableData } from '@/types/type';
 import { ErrorLogSlideOver } from './slide-over';
 type Props = {
     tableData: ErrorLogTableData[]
