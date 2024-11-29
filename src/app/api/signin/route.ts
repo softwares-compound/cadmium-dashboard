@@ -22,6 +22,6 @@ export async function POST(req: NextRequest) {
         return NextResponse.json(cloudResp.data)
     } catch (error: Error | any) {
         console.log("[error] ==>>", error)
-        return new NextResponse(error)
+        return new NextResponse(error, { status: 500 })
     }
 }

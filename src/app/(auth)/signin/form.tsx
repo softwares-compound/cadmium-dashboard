@@ -12,8 +12,12 @@ import {
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import axios from "axios";
+import { toast } from "@/hooks/use-toast";
+import { ToastAction } from "@/components/ui/toast";
+import { useRouter } from "next/navigation";
 
 export function SigninForm() {
+    const router = useRouter()
     const {
         clientId,
         clientSecret,
@@ -60,10 +64,25 @@ export function SigninForm() {
                 clientId,
                 clientSecret
             })
-            console.log(resp);
+
+            if (resp.status == 200) {
+                localStorage.setItem('clientId', clientId);
+                localStorage.setItem('clientSecret', clientSecret);
+                router.push('/rosterly/projects')
+            }
+
         } catch (error: Error | any) {
             console.log("[error] ==>>", error)
-            // alert("Login failed. Please try again.");
+            localStorage.clear();
+            toast({
+                title: "Cough error ",
+                description: "Request failed due to wrong credentials",
+                action: (
+                    <ToastAction altText="Goto schedule to undo" onClick={() => { }}>
+                        Lost credentials?
+                    </ToastAction>
+                ),
+            });
         } finally {
             setLoading(false);
         }
