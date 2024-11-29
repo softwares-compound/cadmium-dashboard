@@ -54,30 +54,6 @@ const projects: ProjectCardProps[] = [
             },
         ],
     },
-    {
-        src: "/material-ui.png",
-        alt: "project logo",
-        title: "Radixlink.lnc",
-        description: "A collection of popular software built with Next.js",
-        href: "/rdx/material-ui/dashboard",
-        data: [
-            {
-                name: "New Error",
-                value: "02",
-                variant: "destructive",
-            },
-            {
-                name: "Code Suggestion",
-                value: "32",
-                variant: "default",
-            },
-            {
-                name: "Total Error Resolved",
-                value: "456",
-                variant: "success",
-            },
-        ],
-    },
 ]
 
 export default function Projects() {
@@ -92,7 +68,7 @@ export default function Projects() {
                             description={project.description}
                             src={project.src}
                             alt={project.alt}
-                            href={project.href}
+                            href={`/rosterly/673d6733caa30090be5b410d/dashboard`}
                             data={project.data}
                         />
                     ))}

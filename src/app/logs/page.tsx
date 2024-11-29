@@ -1,8 +1,9 @@
-import { fetchLatestLogs } from "@/lib/fetch-data";
+import { fetchLogTableData } from "@/lib/fetch-log-table-data";
+
 
 
 const LogsPage = async () => {
-    const reaponse = await fetchLatestLogs();
+    const reaponse = await fetchLogTableData();
 
     console.log('reaponse', reaponse);
     return (

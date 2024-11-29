@@ -39,3 +39,17 @@ export interface SigninFormState {
     setErrors: (errors: { clientId: string; clientSecret: string }) => void;
     setLoading: (loading: boolean) => void;
 }
+
+export type LogTableEntry = {
+    id: string;
+    organizationId: string;
+    applicationId: string;
+    error: string;
+    url: string;
+    method: "default" | "GET" | "POST" | "PUT" | "PATCH" | "DELETE" | null | undefined
+    createdAt: string;
+    updatedAt: string;
+};
+
+// Example: Array of log entries
+export type LogData = LogTableEntry[];

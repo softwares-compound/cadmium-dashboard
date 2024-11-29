@@ -3,10 +3,10 @@ import React from 'react'
 import { Table } from "@/components/ui/table"
 import THead from './t-head';
 import TBody from './t-body';
-import { ErrorLogTableData } from '@/types/type';
+import { ErrorLogTableData, LogTableEntry } from '@/types/type';
 import { ErrorLogSlideOver } from './slide-over';
 type Props = {
-    tableData: ErrorLogTableData[]
+    tableData: LogTableEntry[] | null
 }
 
 const ErrorLogTable = ({ tableData }: Props) => {

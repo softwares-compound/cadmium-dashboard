@@ -12,7 +12,7 @@ const THead = () => {
                 <TableHead className="w-[100px]">Timestamp</TableHead>
                 <TableHead>API endpoint</TableHead>
                 <TableHead>Method</TableHead>
-                <TableHead className="text-right">Error message</TableHead>
+                <TableHead className="text-left">Error message</TableHead>
                 <TableHead className="text-right">Action</TableHead>
             </TableRow>
         </TableHeader>
