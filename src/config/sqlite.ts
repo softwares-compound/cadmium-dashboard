@@ -1,34 +1,33 @@
-import sqlite3 from 'sqlite3';
-import { open, Database } from 'sqlite';
+import Database from 'better-sqlite3';
+import path from 'path';
+import fs from 'fs';
 
-/**
- * Opens a connection to the SQLite database.
- * @returns A promise that resolves to an open database connection.
- */
-export async function openDB(): Promise<Database> {
-  return open({
-    filename: '../db/cadmium.db',
-    driver: sqlite3.Database,
-  });
+const DB_PATH = path.resolve(process.cwd(), 'db/cadmium.db');
+
+// Ensure the database directory exists
+function ensureDBDirectoryExists() {
+  const dir = path.dirname(DB_PATH);
+  if (!fs.existsSync(dir)) {
+    fs.mkdirSync(dir, { recursive: true });
+  }
 }
 
-/**
- * Initializes the database and ensures the organization_detail table exists.
- * Creates the organization_detail table if it does not already exist.
- * @returns A promise that resolves when the database initialization is complete.
- */
-export async function initializeDB(): Promise<void> {
-  const db = await openDB();
-  await db.exec(`
+// Open the SQLite database
+export function openDB() {
+  ensureDBDirectoryExists();
+  return new Database(DB_PATH, { verbose: console.log }); // `verbose` logs all queries
+}
+
+// Initialize the database and create the table
+export function initializeDB() {
+  const db = openDB();
+  db.exec(`
     CREATE TABLE IF NOT EXISTS organization_detail (
       id INTEGER PRIMARY KEY AUTOINCREMENT,
       cd_id TEXT NOT NULL UNIQUE,
-      cd_secret TEXT NOT NULL UNIQUE
+      cd_secret TEXT NOT NULL UNIQUE,
       created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
     )
   `);
+  console.log('Database initialized.');
 }
-
-// Call initializeDB to set up the database when the module is loaded
-initializeDB();
-
