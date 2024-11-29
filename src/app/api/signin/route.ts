@@ -15,7 +15,6 @@ export async function POST(req: NextRequest) {
                 'CD-Secret': body.clientSecret,
             },
         });
-
         // Initialize the database
         initializeDB();
 
@@ -37,14 +36,13 @@ export async function POST(req: NextRequest) {
             }
             throw err; // Re-throw other errors
         }
-
         // Return the external API response
         return NextResponse.json(cloudResp.data);
     } catch (error: Error | any) {
         console.error("[Error] ==>>", error.message || error);
         return NextResponse.json(
-            { error: error.message || "Internal Server Error" },
-            { status: 500 }
+            { error: error.message || "Wrong credentials" },
+            { status: 401 }
         );
     }
 }
