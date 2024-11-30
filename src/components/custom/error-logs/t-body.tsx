@@ -13,7 +13,6 @@ type Props = {
 
 const TBody: React.FC<Props> = ({ tableData, onRowClick }) => {
     const handleRowClick = (data: LogTableEntry) => {
-        console.log("Row clicked:", data);
         if (onRowClick) {
             onRowClick(data);
         }

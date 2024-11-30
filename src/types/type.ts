@@ -27,7 +27,7 @@ export interface SigninFormState {
 
 // Type for each formatted response in ragInference
 export interface FormattedRagResponse {
-    type: string; // e.g., "markdown", "code"
+    type: "markdown" | "code";
     value: string;
 }
 
@@ -49,7 +49,7 @@ export interface LogTableEntry {
     method: "GET" | "POST" | "PUT" | "PATCH" | "DELETE" | "default";
     createdAt: string; // ISO 8601 format
     updatedAt: string; // ISO 8601 format
-    ragInference: RagResponse | null; // Parsed JSON or null if parsing fails
+    ragInference: { rag_response: RagResponse | null }; // Parsed JSON or null if parsing fails
 }
 
 // Example: Array of log entries
