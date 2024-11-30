@@ -3,14 +3,15 @@ import React from 'react'
 import { Table } from "@/components/ui/table"
 import THead from './t-head';
 import TBody from './t-body';
-import { ErrorLogTableData } from '@/app/types/type';
+import { LogTableEntry } from '@/types/type';
 import { ErrorLogSlideOver } from './slide-over';
+import { useLogStore } from '@/stores/useLogStore';
 type Props = {
-    tableData: ErrorLogTableData[]
+    tableData: LogTableEntry[] | null
 }
 
 const ErrorLogTable = ({ tableData }: Props) => {
-    const [openSlideOver, setOpenSlideOver] = React.useState(false);
+    const { openSlideOver, setOpenSlideOver, selectedLog, setSelectedLog } = useLogStore();
     const errorLog = {
         timestamp: "2024-11-22 10:45:12",
         apiEndpoint: "/api/v1/users",
@@ -23,13 +24,18 @@ const ErrorLogTable = ({ tableData }: Props) => {
             "Consult the logs for additional details.",
         ],
     };
+
+    const handleRowClick = async (data: LogTableEntry) => {
+        setOpenSlideOver(true);
+        setSelectedLog(data);
+    }
     return (
         <div>
             <Table>
                 <THead />
-                <TBody tableData={tableData} onRowClick={() => setOpenSlideOver(true)} />
+                <TBody tableData={tableData} onRowClick={handleRowClick} />
             </Table>
-            <ErrorLogSlideOver open={openSlideOver} onOpenChange={setOpenSlideOver} errorLog={errorLog} onMarkResolved={() => setOpenSlideOver(false)} />
+            <ErrorLogSlideOver open={openSlideOver} onOpenChange={setOpenSlideOver} errorLog={selectedLog} onMarkResolved={() => setOpenSlideOver(false)} />
         </div>
     )
 }

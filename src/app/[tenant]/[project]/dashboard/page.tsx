@@ -11,58 +11,15 @@ import { Separator } from "@/components/ui/separator"
 import { Typography } from "@/components/ui/typography";
 import TablePagination from "@/components/custom/error-logs/table-pagination";
 import ErrorLogTable from "@/components/custom/error-logs";
-import { ErrorLogTableData } from "@/app/types/type";
+import { LogTableEntry } from "@/types/type";
 import { ErrorLogChart } from "@/components/custom/error-logs/log-chart";
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import NumericStats from "@/components/custom/error-logs/numeric-stats";
 import ReloadWithTimestamp from "@/components/custom/last-reload";
+import { fetchLogTableData } from "@/lib/fetch-log-table-data";
 
-const tableData: ErrorLogTableData[] = [
-    {
-        timestamp: "2024-11-22 10:45:12",
-        apiEndpoint: "/api/v1/users",
-        method: "GET",
-        errorMessage: "User not found",
-        action: "Retry",
-    },
-    {
-        timestamp: "2024-11-22 10:50:25",
-        apiEndpoint: "/api/v1/login",
-        method: "POST",
-        errorMessage: "Invalid credentials",
-        action: "Retry",
-    },
-    {
-        timestamp: "2024-11-22 11:05:00",
-        apiEndpoint: "/api/v1/products",
-        method: "GET",
-        errorMessage: "Internal server error",
-        action: "Report",
-    },
-    {
-        timestamp: "2024-11-22 11:15:42",
-        apiEndpoint: "/api/v1/orders",
-        method: "PUT",
-        errorMessage: "Unauthorized access",
-        action: "Reauthenticate",
-    },
-    {
-        timestamp: "2024-11-22 11:20:10",
-        apiEndpoint: "/api/v1/cart",
-        method: "DELETE",
-        errorMessage: "Resource not found",
-        action: "Retry",
-    },
-    {
-        timestamp: "2024-11-22 11:20:10",
-        apiEndpoint: "/api/v1/cart",
-        method: "PATCH",
-        errorMessage: "Resource not found",
-        action: "Retry",
-    },
-];
+export default async function Dashboard() {
+    const tableData: LogTableEntry[] | null = await fetchLogTableData();
 
-export default function Dashboard() {
     return (
         <div className="">
             {/* <ToggleTheme /> */}
@@ -105,6 +62,10 @@ export default function Dashboard() {
                 </div>
                 <div className="flex-1 py-2 rounded-xl dark:bg-card-2 bg-card-2" >
                     <Typography variant="xl" className=" px-2 py-2 ">Error logs</Typography>
+                    {
+                        tableData === null &&
+                        <Typography variant="sm" className="text-muted-foreground px-2 py-8">No logs found.</Typography>
+                    }
                     <ErrorLogTable tableData={tableData} />
                     <div className="mt-4">
                         <TablePagination />

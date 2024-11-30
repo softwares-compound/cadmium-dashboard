@@ -1,10 +1,5 @@
-import Signin from "./(auth)/signin/page";
-
-
+"use client";
+import { redirect } from "next/navigation";
 export default function Home() {
-  return (
-    <div className="flex h-screen w-full items-center justify-center px-4">
-      <Signin />
-    </div>
-  );
+  return redirect("/signin");
 }

@@ -1,9 +1,7 @@
 import { Typography } from '@/components/ui/typography'
 import React from 'react'
 
-type Props = {}
-
-const NumericStats = (props: Props) => {
+const NumericStats = () => {
     return (
         <div className="border-none ring-0 bg-transparent">
             <div className="flex flex-col items-stretch space-y-0 p-0 sm:flex-row">
