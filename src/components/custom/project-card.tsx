@@ -11,7 +11,7 @@ import {
 import Image from "next/image"
 import { Badge } from "@/components/ui/badge"
 import Link from "next/link"
-import { ProjectCardProps } from '@/app/types/type'
+import { ProjectCardProps } from '@/types/type'
 
 const ProjectCard = (props: ProjectCardProps) => {
     return (
