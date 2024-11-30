@@ -1,6 +1,5 @@
 import { AXIOS_INSTANCE } from '@/axios/axios';
-import { LogTableEntry } from '@/types/type';
-import axios from 'axios';
+import { LogTableEntry, RagResponse } from '@/types/type';
 
 export const fetchLogTableData = async (): Promise<LogTableEntry[] | null> => {
     const headers = {
@@ -21,27 +20,46 @@ export const fetchLogTableData = async (): Promise<LogTableEntry[] | null> => {
         method
         createdAt
         updatedAt
+        ragInference
       }
     }
   `;
 
     const variables = {
-        page: 1, // Change this to the desired page number
-        limit: 10, // Change this to the desired limit
+        page: 1,
+        limit: 10,
     };
+
     try {
         const response = await AXIOS_INSTANCE.post(
-            "/graphql",
-            { query, variables }, // Sending query and variables as the request body
-            { headers } // Attach headers
+            '/graphql',
+            { query, variables },
+            { headers }
         );
+
         if (response.data.errors) {
             console.error('Error fetching logs:', response.data.errors);
             return null;
         }
-        return response.data.data.logs;
+
+        // Parse ragInference for each log entry
+        const logs: LogTableEntry[] = response.data.data.logs.map((log: any) => ({
+            ...log,
+            ragInference: log.ragInference ? parseRagInference(log.ragInference) : null,
+        }));
+
+        return logs;
     } catch (error) {
         console.error('Error during the API request:', error);
+        return null;
+    }
+};
+
+const parseRagInference = (ragInference: string): RagResponse | null => {
+    try {
+        return JSON.parse(ragInference) as RagResponse;
+    } catch (error) {
+        console.error('Failed to parse ragInference:', error);
         return null;
     }
 };

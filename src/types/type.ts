@@ -13,21 +13,6 @@ export type ProjectCardProps = {
     href: string
 }
 
-export type ErrorLogTableData = {
-    timestamp: string
-    apiEndpoint: string
-    method: "default" | "GET" | "POST" | "PUT" | "PATCH" | "DELETE" | null | undefined
-    errorMessage: string
-    action: string
-}
-
-export type ErrorLogData = {
-    timestamp: string;
-    apiEndpoint: string;
-    method: string;
-    errorMessage: string;
-    resolutionSteps: string[];
-}
 
 export interface SigninFormState {
     clientId: string;
@@ -40,16 +25,41 @@ export interface SigninFormState {
     setLoading: (loading: boolean) => void;
 }
 
-export type LogTableEntry = {
+// Type for each formatted response in ragInference
+export interface FormattedRagResponse {
+    type: string; // e.g., "markdown", "code"
+    value: string;
+}
+
+// Type for rag_response object
+export interface RagResponse {
+    formatted_rag_response: FormattedRagResponse[];
+    application_id: string;
+    created_at: string; // ISO 8601 format
+    query: string;
+}
+
+// Type for Log Entry
+export interface LogTableEntry {
     id: string;
     organizationId: string;
     applicationId: string;
     error: string;
     url: string;
-    method: "default" | "GET" | "POST" | "PUT" | "PATCH" | "DELETE" | null | undefined
-    createdAt: string;
-    updatedAt: string;
-};
+    method: "GET" | "POST" | "PUT" | "PATCH" | "DELETE" | "default";
+    createdAt: string; // ISO 8601 format
+    updatedAt: string; // ISO 8601 format
+    ragInference: RagResponse | null; // Parsed JSON or null if parsing fails
+}
 
 // Example: Array of log entries
 export type LogData = LogTableEntry[];
+
+export interface LogStoreState {
+    loading: boolean;
+    setLoading: (loading: boolean) => void;
+    openSlideOver: boolean;
+    setOpenSlideOver: (openSlideOver: boolean) => void;
+    selectedLog: LogTableEntry | null;
+    setSelectedLog: (selectedLog: LogTableEntry) => void;
+}
